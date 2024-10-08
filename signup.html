@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bank Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        /* Signup Container */
+        .signup-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+
+        /* Input Fields */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Submit Button */
+        button[type="submit"] {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #e60000;
+        }
+
+        /* Error message */
+        #signupMessage {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ff4d4d;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Blood Bank Signup</h1>
+        <form id="signupForm">
+            <input type="text" id="name" name="name" placeholder="Full Name" required><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required><br>
+            <input type="password" id="password" name="password" placeholder="Password" required><br>
+            <select id="bloodType" name="bloodType" required>
+                <option value="">Select Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="AB+">AB+</option>
+                <option value="O+">O+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="AB-">AB-</option>
+                <option value="O-">O-</option>
+            </select><br>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <div id="signupMessage"></div>
+
+        <footer>
+            <p>&copy; 2024 Blood Bank Management System. All Rights Reserved.</p>
+            <p>Contact us at: <a href="mailto:info@bloodbank.com">info@bloodbank.com</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Signup Form Logic
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing
+
+            // Get the form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const bloodType = document.getElementById('bloodType').value;
+
+            // Basic validation
+            if (name && email && phone && password && bloodType) {
+                document.getElementById('signupMessage').innerText = 'Signup successful! Welcome, ' + name + '.';
+                document.getElementById('signupMessage').style.color = 'green';
+                // Redirect or handle successful signup logic here
+            } else {
+                document.getElementById('signupMessage').innerText = 'Please fill in all fields.';
+            }
+
+            // Clear the form
+            document.getElementById('signupForm').reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receiver Registration - Blood Bank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        /* Receiver Container */
+        .receiver-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff4d4d;
+            margin-bottom: 20px;
+        }
+
+        /* Input Fields */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 10px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Submit Button */
+        button[type="submit"] {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #e60000;
+        }
+
+        /* Error message */
+        #receiverMessage {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 20px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: #ff4d4d;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="receiver-container">
+        <h1>Receiver Registration</h1>
+        <form id="receiverForm">
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" required><br>
+            <input type="date" id="dob" name="dob" required><br>
+            <select id="bloodType" name="bloodType" required>
+                <option value="">Select Required Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="AB+">AB+</option>
+                <option value="O+">O+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="AB-">AB-</option>
+                <option value="O-">O-</option>
+            </select><br>
+            <textarea id="message" name="message" placeholder="Additional Information" rows="4" style="width: 100%;"></textarea><br>
+            <button type="submit">Request Blood</button>
+        </form>
+
+        <div id="receiverMessage"></div>
+
+        <footer>
+            <p>&copy; 2024 Blood Bank Management System. All Rights Reserved.</p>
+            <p>Contact us at: <a href="mailto:info@bloodbank.com">info@bloodbank.com</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Receiver Registration Logic
+        document.getElementById('receiverForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from refreshing
+
+            // Get the form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const dob = document.getElementById('dob').value;
+            const bloodType = document.getElementById('bloodType').value;
+            const message = document.getElementById('message').value;
+
+            // Basic validation (for demo purposes, assuming valid data)
+            if (fullName && email && phone && dob && bloodType) {
+                document.getElementById('receiverMessage').innerText = 'Request submitted successfully! Thank you, ' + fullName + '.';
+                document.getElementById('receiverMessage').style.color = 'green';
+                // Redirect or show confirmation after successful request
+            } else {
+                document.getElementById('receiverMessage').innerText = 'Please fill in all fields.';
+            }
+
+            // Clear the form
+            document.getElementById('receiverForm').reset();
+        });
+    </script>
+</body>
+</html>
